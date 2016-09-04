@@ -11,7 +11,6 @@ public class SimpleRule implements Rule {
 	private Condition condition;
 	private Optional<OnSuccessAction> successAction ;
 	private Optional<OnFailAction> failAction;
-	private static final int DEFAULT_PRIORITY = 1 ;
 	private int priority = DEFAULT_PRIORITY;
 
 	public SimpleRule(Condition aCondition, Optional<OnSuccessAction> aSuccessAction, Optional<OnFailAction> aFailAction) {
@@ -25,17 +24,17 @@ public class SimpleRule implements Rule {
 		this.priority = priority;
 	}
 
-	public boolean evaulate() {
-		boolean result = condition.evaluate();
+	public boolean evaulate(RuleContext context) {
+		boolean result = condition.evaluate(context);
 		if(result){
-			OnSuccessAction action = successAction.orElse(()->{});
-			action.onSuccess();
+			if(successAction.isPresent())
+				successAction.get().onSuccess(context);
 		}
 		else{
-			OnFailAction action = failAction.orElse(()->{});
-			action.onFailure();
+			if(failAction.isPresent())
+				failAction.get().onFailure(this, context);
 		}
-		return false;
+		return result;
 	}
 
 	public int priority() {
