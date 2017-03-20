@@ -35,7 +35,7 @@ class SimpleRuleEngineTest extends Specification {
 													 } as OnSuccessAction;
 
 
-				SimpleRule rule1 = new SimpleRule(cond1, Optional.of(bonusForExperience), Optional.ofNullable(null), 1);
+				SimpleRule rule1 = new SimpleRule("Experience Bonus",cond1, Optional.of(bonusForExperience), Optional.ofNullable(null), 1);
 
 				Conditions experienceWithDesignationConditions  = new Conditions(cond1);
 				experienceWithDesignationConditions.and(cond2);
@@ -44,9 +44,9 @@ class SimpleRuleEngineTest extends Specification {
 														employee.bonus = 150;
 													   } as OnSuccessAction;
 
-				SimpleRule rule2 = new SimpleRule(experienceWithDesignationConditions, Optional.of(bonsuForDesignation), Optional.ofNullable(null), 2);
+				SimpleRule rule2 = new SimpleRule("Manager Bonus",experienceWithDesignationConditions, Optional.of(bonsuForDesignation), Optional.ofNullable(null), 2);
 				
-				RuleSet set = new RuleSet();
+				RuleSet set = new RuleSet("Bonus RuleSet");
 				set.addRules(rule1, rule2);
 				
 				SimpleRuleEngine engine = new SimpleRuleEngine();
@@ -78,7 +78,7 @@ class SimpleRuleEngineTest extends Specification {
 													 } as OnSuccessAction;
 
 
-				SimpleRule rule1 = new SimpleRule(cond1, Optional.of(bonusForExperience), Optional.ofNullable(null), 1);
+				SimpleRule rule1 = new SimpleRule("Experience Bonus",cond1, Optional.of(bonusForExperience), Optional.ofNullable(null), 1);
 
 				Conditions experienceWithDesignationConditions  = new Conditions(cond1);
 				experienceWithDesignationConditions.and(cond2);
@@ -87,9 +87,9 @@ class SimpleRuleEngineTest extends Specification {
 														employee.bonus += 150;
 													   } as OnSuccessAction;
 
-				SimpleRule rule2 = new SimpleRule(experienceWithDesignationConditions, Optional.of(bonsuForDesignation), Optional.ofNullable(null), 2);
+				SimpleRule rule2 = new SimpleRule("Manager Bonus",experienceWithDesignationConditions, Optional.of(bonsuForDesignation), Optional.ofNullable(null), 2);
 				
-				RuleSet set = new RuleSet();
+				RuleSet set = new RuleSet("BonusRuleSet");
 				set.addRules(rule1, rule2);
 				
 				SimpleRuleEngine engine = new SimpleRuleEngine();

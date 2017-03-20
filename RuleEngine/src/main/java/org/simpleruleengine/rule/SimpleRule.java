@@ -7,17 +7,17 @@ import org.simpleruleengine.rule.action.OnSuccessAction;
 import org.simpleruleengine.rule.condition.Condition;
 
 public class SimpleRule implements Rule {
-
+	private String name;
 	private Condition condition;
 	private Optional<OnSuccessAction> successAction ;
 	private Optional<OnFailAction> failAction;
 	private int priority = DEFAULT_PRIORITY;
 
-	public SimpleRule(Condition aCondition, Optional<OnSuccessAction> aSuccessAction, Optional<OnFailAction> aFailAction) {
-		this(aCondition, aSuccessAction, aFailAction, DEFAULT_PRIORITY);
+	public SimpleRule(String name, Condition aCondition, Optional<OnSuccessAction> aSuccessAction, Optional<OnFailAction> aFailAction) {
+		this(name, aCondition, aSuccessAction, aFailAction, DEFAULT_PRIORITY);
 	}
 
-	public SimpleRule(Condition aCondition, Optional<OnSuccessAction> aSuccessAction, Optional<OnFailAction> aFailAction, int priority) {
+	public SimpleRule(String name,Condition aCondition, Optional<OnSuccessAction> aSuccessAction, Optional<OnFailAction> aFailAction, int priority) {
 		this.condition = aCondition;
 		successAction = aSuccessAction;
 		failAction = aFailAction;
@@ -39,6 +39,10 @@ public class SimpleRule implements Rule {
 
 	public int priority() {
 		return priority;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

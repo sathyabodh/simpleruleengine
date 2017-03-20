@@ -1,0 +1,24 @@
+ruleSets:
+- "EmployeeBonusRule": 
+    - name: "Architect Bonus"
+      condition: "employee.role == 'Architect'"
+      successActionClass: "org.simpleruleengine.rule.action.ArchitectBonus.class"
+      priority: 3
+    - name: "Manager Bonus"
+      condition: "employee.role == 'Manager'"
+      successActionClass: "org.simpleruleengine.rule.action.ManagerBonus.class"
+      priority: 3
+    - name: "Developer Bonus"
+      condition: "employee.role == 'Manager'"
+      successActionClass: "org.simpleruleengine.rule.action.DeveloperBonus.class"
+      priority: 2
+- "EmployeeBonusRule2": 
+    - name: "Architect Bonus"
+      condition: "employee.role == 'Architect'"
+      successActionClass: "org.simpleruleengine.rule.action.ArchitectBonus.class"
+    - name: "Manager Bonus"
+      condition: "employee.role == 'Manager'"
+      successActionClass: "org.simpleruleengine.rule.action.ManagerBonus.class"
+    - name: "Developer Bonus"
+      condition: "employee.role == 'Manager'"
+      successActionClass: "org.simpleruleengine.rule.action.DeveloperBonus.class"

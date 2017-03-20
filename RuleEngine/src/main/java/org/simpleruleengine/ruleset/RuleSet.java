@@ -8,8 +8,10 @@ import java.util.TreeSet;
 import org.simpleruleengine.rule.Rule;
 
 public class RuleSet {
+	private String name;
 	private TreeSet<Rule> rules ;
-	public RuleSet() {
+	public RuleSet(String name) {
+		this.name = name;
 		rules = new TreeSet<>((rule1, rule2)-> rule2.priority() - rule1.priority());
 	}
 	
@@ -19,5 +21,9 @@ public class RuleSet {
 	
 	public Collection<Rule> getRules(){
 		return Collections.unmodifiableCollection(rules);
+	}
+
+	public String getName() {
+		return name;
 	}
 }
